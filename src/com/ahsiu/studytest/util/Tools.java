@@ -7,6 +7,8 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -86,6 +88,7 @@ public class Tools {
         act.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
     }
+
     //设置act横屏 在onresume中调用 竖屏 SCREEN_ORIENTATION_PORTRAIT
     //另一种方法：在xml中设置 android:screenOrientation="portrait"
     public static void setScreenLandscape(Activity act) {
@@ -95,6 +98,13 @@ public class Tools {
         if (act.getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             act.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
+    }
+
+    public static DisplayMetrics getScreeenDisplay(Activity context) {
+        Display display = context.getWindowManager().getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        return displayMetrics;
     }
 
 }

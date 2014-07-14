@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ahsiu.studytest.view.HistogramView;
+import com.ahsiu.studytest.view.HorizontalScrollView;
 
 import org.taptwo.android.widget.TitleProvider;
 
@@ -23,10 +24,11 @@ public class AsyncAdapter extends BaseAdapter implements TitleProvider {
 
     private LayoutInflater mInflater;
 
-    private static final DateFormat dfTitle = new SimpleDateFormat("E, dd MMM");
+    private static final DateFormat dfTitle = new SimpleDateFormat("MMM");
 
     private static final int daysDepth = 30;
-    private static final int daysSize = daysDepth * 2 + 1;
+    private static final int daysSize = daysDepth /** 2 + 1*/
+            ;
 
     private static Date[] dates = new Date[daysSize];
     private static String[] content = new String[daysSize];
@@ -65,9 +67,13 @@ public class AsyncAdapter extends BaseAdapter implements TitleProvider {
         ViewHolder holder = null;
 
         if (view == null) {
-            view = new HistogramView(mContext);
-            // view = mInflater.inflate(R.layout.day_view, null);
-
+            // view = new HistogramView(mContext);
+            view = mInflater.inflate(R.layout.layout_histogram_view, null);
+            HistogramView historyView = (HistogramView) view.findViewById(R.id.histogram_view);
+            ((HorizontalScrollView) historyView.getParent()).fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(dates[position]);
+            historyView.setCalendar(calendar);
             holder = new ViewHolder();
 /*
             holder.mProgressBar = (ProgressBar) view.findViewById(R.id.progress);
@@ -125,18 +131,12 @@ public class AsyncAdapter extends BaseAdapter implements TitleProvider {
         Date today = new Date();
 
         Calendar calPast = Calendar.getInstance();
-        Calendar calFuture = Calendar.getInstance();
-
         calPast.setTime(today);
-        calFuture.setTime(today);
 
-        dates[daysDepth] = calPast.getTime();
+//        dates[daysDepth] = calPast.getTime();
         for (int i = 1; i <= daysDepth; i++) {
-            calPast.add(Calendar.DATE, -1);
             dates[daysDepth - i] = calPast.getTime();
-
-            calFuture.add(Calendar.DATE, 1);
-            dates[daysDepth + i] = calFuture.getTime();
+            calPast.add(Calendar.MONTH, -1);
         }
     }
 

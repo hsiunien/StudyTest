@@ -16,16 +16,16 @@
             android:id="@+id/viewflowindic"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="0dip"
             app:clipPadding="5dp"
             app:customTypeface="fonts/Antic.ttf"
             app:footerColor="#1eb9f3"
             app:footerLineHeight="2dp"
             app:footerTriangleHeight="10dp"
             app:selectedColor="#1eb9f3"
-            app:selectedSize="12dp"
-            app:textColor="#126786"
-            app:textSize="11dp"
+            app:selectedSize="20dp"
+            app:textColor="#353f49"
+            app:textSize="20dp"
             app:titlePadding="10dp"></org.taptwo.android.widget.TitleFlowIndicator>
 
     </LinearLayout>

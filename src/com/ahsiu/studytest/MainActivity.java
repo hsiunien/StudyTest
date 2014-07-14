@@ -3,6 +3,7 @@ package com.ahsiu.studytest;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.ahsiu.studytest.util.Log;
 import com.ahsiu.studytest.util.Tools;
 
 import org.taptwo.android.widget.TitleFlowIndicator;
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
         TitleFlowIndicator indicator = (TitleFlowIndicator) findViewById(R.id.viewflowindic);
         indicator.setTitleProvider(adapter);
         viewFlow.setFlowIndicator(indicator);
+        Log.DEBUG = true;
     }
 
     @Override

@@ -380,6 +380,7 @@ public class ViewFlow extends AdapterView<Adapter> {
         return false;
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         if (getChildCount() == 0)
