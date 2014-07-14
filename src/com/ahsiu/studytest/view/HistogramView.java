@@ -101,5 +101,6 @@ public class HistogramView extends View {
         paint.setColor(Color.parseColor("#ccccce"));
         canvas.drawRect(10, 10, 10 + width - 20, 10 + height - 20, paint);
         paint.setColor(Color.parseColor("#29b318"));
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
     }
 }
