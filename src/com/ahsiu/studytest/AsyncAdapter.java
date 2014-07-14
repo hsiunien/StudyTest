@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ahsiu.studytest.util.Log;
 import com.ahsiu.studytest.view.HistogramView;
 import com.ahsiu.studytest.view.HorizontalScrollView;
 

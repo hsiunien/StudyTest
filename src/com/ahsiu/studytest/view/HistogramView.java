@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 
 import com.ahsiu.studytest.util.Log;
@@ -19,20 +20,22 @@ import java.util.Calendar;
 public class HistogramView extends View {
     private Paint paint = new Paint();
     private int sw, sh;
-    private float[][] tradeData;
+    private float[][] tradeData;//交易数据
+    private float maxTrade;//单日最大交易额
     private Calendar calendar;
 
     public HistogramView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        tradeData = new float[][]{{1000, 0}, {1000, 0}, {1000, 0}, {1000, 0}, {1000, 0}, {1000, 0}, {200, 10}};
+        tradeData = new float[][]{{1000, 0}, {1000, 0}, {1000, 0}, {1020, 0}, {1320, 0}, {1000, 0}, {200, 10}};
         Log.d("HistogramView");
     }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Log.d("OnMeasure");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        this.setMeasuredDimension(1600,300);
+        this.setMeasuredDimension(1600, 300);
     }
 
 
@@ -77,7 +80,13 @@ public class HistogramView extends View {
     }
 
     private void initView() {
-        getMonthOfDays();
+        int days = getMonthOfDays();
+        ViewGroup.LayoutParams layoutParams = getLayoutParams();
+        layoutParams.width = days * 100;
+        setLayoutParams(layoutParams);
+        setMeasuredDimension(days * 100, 300);
+        invalidate();
+
     }
 
     //当月需要绘制几条柱子
@@ -87,9 +96,9 @@ public class HistogramView extends View {
         if (calendar.get(Calendar.MONTH) == this.calendar.get(Calendar.MONTH)) {
             days = calendar.get(Calendar.DAY_OF_MONTH);
         } else {
-            days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+            days = this.calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         }
-        Log.d("days=" + days + "  month=" + calendar.get(Calendar.MONTH));
+        Log.d("days=" + days + "  month=" + this.calendar.get(Calendar.MONTH));
         return days;
     }
 

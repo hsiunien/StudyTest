@@ -6,6 +6,8 @@ import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by hsiunien on 14-7-14.
@@ -36,12 +38,19 @@ public class BitmapUtil {
         return string;
     }
 
-    public static getBitmapFromPath(String path, BitmapFactory.Options options) {
-        FileInputStream fis = new FileInputStream(path);
+    public static Bitmap getBitmapFromPath(String path, BitmapFactory.Options options) {
+        FileInputStream fis = null;
         Bitmap bmp = null;
-        bmp = BitmapFactory.decodeFileDescriptor(fis, null, options);
-        return;
-        bmp
+        try {
+            fis = new FileInputStream(path);
+            bmp = BitmapFactory.decodeFileDescriptor(fis.getFD(), null, options);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bmp;
 
     }
 

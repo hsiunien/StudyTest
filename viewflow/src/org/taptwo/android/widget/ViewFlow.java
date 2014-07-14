@@ -356,11 +356,11 @@ public class ViewFlow extends AdapterView<Adapter> {
 
                     if (velocityX > SNAP_VELOCITY && mCurrentScreen > 0) {
                         // Fling hard enough to move left
-                        snapToScreen(mCurrentScreen - 1);
+                    //    snapToScreen(mCurrentScreen - 1);
                     } else if (velocityX < -SNAP_VELOCITY
                             && mCurrentScreen < getChildCount() - 1) {
                         // Fling hard enough to move right
-                        snapToScreen(mCurrentScreen + 1);
+                      //  snapToScreen(mCurrentScreen + 1);
                     } else {
                         snapToDestination();
                     }
@@ -456,11 +456,11 @@ public class ViewFlow extends AdapterView<Adapter> {
 
                     if (velocityX > SNAP_VELOCITY && mCurrentScreen > 0) {
                         // Fling hard enough to move left
-                        snapToScreen(mCurrentScreen - 1);
+                      //  snapToScreen(mCurrentScreen - 1);
                     } else if (velocityX < -SNAP_VELOCITY
                             && mCurrentScreen < getChildCount() - 1) {
                         // Fling hard enough to move right
-                        snapToScreen(mCurrentScreen + 1);
+                      //  snapToScreen(mCurrentScreen + 1);
                     } else {
                         snapToDestination();
                     }
