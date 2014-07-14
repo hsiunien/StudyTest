@@ -78,7 +78,6 @@ public class HistogramView extends View {
 
     private void initView() {
         getMonthOfDays();
-        postInvalidate();
     }
 
     //当月需要绘制几条柱子
