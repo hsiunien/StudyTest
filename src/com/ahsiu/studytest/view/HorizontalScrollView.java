@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 public class HorizontalScrollView extends android.widget.HorizontalScrollView {
     private float lastLocationX;
     private Paint paint;
+    private boolean isOnTerminus;//是否在终点临界点
+
 
     public HorizontalScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -31,19 +33,21 @@ public class HorizontalScrollView extends android.widget.HorizontalScrollView {
     public boolean onTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                lastLocationX = ev.getX();
-                getParent().requestDisallowInterceptTouchEvent(true);
+                if (isOnTerminus) {
+                    getParent().requestDisallowInterceptTouchEvent(false);
+                } else {
+                    getParent().requestDisallowInterceptTouchEvent(true);
+                }
                 break;
-            case MotionEvent.ACTION_MOVE:
+          /*  case MotionEvent.ACTION_MOVE:
                 if (getScrollX() == 0 && !isFlingLeft(ev.getX()) || getScrollX() == getWidth() && isFlingLeft(ev.getX())) {//内部不可以滑动
                      getParent().requestDisallowInterceptTouchEvent(false);
                     return false;
                 } else {
                    getParent().requestDisallowInterceptTouchEvent(true);
                 }
-                break;
+                break;*/
             case MotionEvent.ACTION_UP:
-                lastLocationX = ev.getX();
                 break;
         }
         return super.onTouchEvent(ev);
@@ -56,8 +60,12 @@ public class HorizontalScrollView extends android.widget.HorizontalScrollView {
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if (l == oldl && oldl != 0) {
-            getParent().requestDisallowInterceptTouchEvent(false);
+        if (l == oldl) {
+//            getParent().requestDisallowInterceptTouchEvent(false);
+            isOnTerminus = true;
+        } else {
+//            getParent().requestDisallowInterceptTouchEvent(false);
+            isOnTerminus = false;
         }
     }
 }
