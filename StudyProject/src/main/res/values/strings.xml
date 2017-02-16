@@ -2,5 +2,12 @@
 <resources>
     <string name="app_name">StudyTest</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="net_work_test">网络测试</string>
+    <string-array name="urls">
+        <item>http://www.baidu.com</item>
+        <item>https://www.baidu.com</item>
+        <item>https://git.iboxpay.com</item>
+        <item>https://api.iboxpay.com</item>
+        <item>https://www.iboxpay.com</item>
+    </string-array>
 </resources>

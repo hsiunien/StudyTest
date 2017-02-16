@@ -59,7 +59,7 @@ public class StringUtil {
         }
         int strLen = str.length();
         for (int i = 0; i < strLen; i++) {
-            if (Character.isWhitespace(str.charAt(i)) == false) {
+            if (!Character.isWhitespace(str.charAt(i))) {
                 return false;
             }
         }
