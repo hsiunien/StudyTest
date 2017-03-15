@@ -1,36 +1,32 @@
 package com.ahsiu.studytest;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
-import com.ahsiu.studytest.ndk.Fibonacci;
-import com.ahsiu.studytest.util.Log;
-import com.ahsiu.studytest.util.Tools;
+import com.ahsiu.studytest.rx.RxMainActivity;
 
-import org.taptwo.android.widget.TitleFlowIndicator;
-import org.taptwo.android.widget.ViewFlow;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class MainActivity extends Activity {
-    private ViewFlow viewFlow;
+public class MainActivity extends BaseActivity {
+    @BindView(R.id.btn_rx)
+    Button mBtnRx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.title_layout);
-        viewFlow = (ViewFlow) findViewById(R.id.viewflow);
-        AsyncAdapter adapter = new AsyncAdapter(this);
-        viewFlow.setAdapter(adapter, adapter.getTodayId());
-        TitleFlowIndicator indicator = (TitleFlowIndicator) findViewById(R.id.viewflowindic);
-        indicator.setTitleProvider(adapter);
-        viewFlow.setFlowIndicator(indicator);
-        Log.DEBUG = true;
-        Fibonacci.recursivNative(10);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
     }
 
-    @Override
-    protected void onResume() {
-        Tools.setScreenLandscape(this);
-        super.onResume();
+
+    @OnClick(R.id.btn_rx)
+    public void onClick() {
+        Intent intent=new Intent(getActivity(),RxMainActivity.class);
+        startActivity(intent);
     }
+
 }

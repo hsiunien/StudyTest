@@ -2,27 +2,38 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     buildTypes {
-        myApp.initWith(buildTypes.debug)
+        release {
+
+        }
+        debug {
+
+        }
 
     }
     lintOptions {
         abortOnError false
     }
+//    configurations {
+//        all*.exclude group: 'com.android.support', module: 'support-v4'
+//    }
 
 }
 
-
-
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile ('com.android.support.constraint:constraint-layout:1.0.2')
+    compile ('com.jakewharton:butterknife:8.5.1')
+    compile 'com.jakewharton.rxrelay2:rxrelay:2.0.0'
+
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     testCompile 'junit:junit:4.12'
 }

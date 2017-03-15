@@ -3,4 +3,7 @@
     <string name="app_name">StudyTest</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="rxjava">RxAndroid</string>
+    <string name="permission">权限</string>
+    <string name="insert_listener">插入监听</string>
 </resources>

@@ -1,22 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.ahsiu.studytest.rx.RxMainActivity">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_msg"
+        />
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_msg"
         android:id="@+id/btn_rx"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rxjava" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/permission"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_rx"
-        app:layout_constraintLeft_toRightOf="@+id/btn_rx"
-        app:layout_constraintDimensionRatio="1:3"
+        android:text="@string/insert_listener"
         />
 </android.support.constraint.ConstraintLayout>
