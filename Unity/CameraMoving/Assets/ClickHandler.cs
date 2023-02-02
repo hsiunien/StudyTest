@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Cinemachine;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class ClickHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Event delegates triggered on click.
+    [FormerlySerializedAs("onClick")]
+    [SerializeField]
+    private Button.ButtonClickedEvent m_OnClick = new Button.ButtonClickedEvent();
+
+    public CinemachineVirtualCamera VirtualCamera; 
     void Start()
     {
         DOTween.Init();
@@ -36,15 +45,20 @@ public class ClickHandler : MonoBehaviour
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject == this.gameObject)
             {
-                OnClicked();
+                m_OnClick.Invoke();
             }
         }
  
     }
 
-    private void OnClicked()
+    public void ChangeFieldOfView()
     {
         Debug.Log($"clicked,{Camera.main.depth}, {Camera.main.fieldOfView}");
         DOTween.To(() => Camera.main.fieldOfView, x => Camera.main.fieldOfView = x, 20f, 1);
+    }
+
+    public void OnChangeCamera()
+    {
+        VirtualCamera.gameObject.SetActive(!VirtualCamera.gameObject.activeSelf);
     }
 }
