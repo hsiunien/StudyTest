@@ -6,4 +6,4 @@ test for camera moving action
 ## using VirtualCamera
 Install Cinemachine in Package Manager, and create 2 virtualCamera, change the visible between those cameras.
 
-![example2](https://github.com/hsiunien/StudyTest/blob/master/Unity/CameraMoving/images/show.gif?raw=true)
+![example2](https://github.com/hsiunien/StudyTest/blob/master/Unity/CameraMoving/images/virturalimg.png?raw=true)
