@@ -33,7 +33,7 @@ MonoBehaviour:
   m_fallbackFontAssets:
   - {fileID: 11400000, guid: 20be6fedc1a2e4cf5ab7ae7fd1969e56, type: 2}
   m_matchMaterialPreset: 1
-  m_defaultSpriteAsset: {fileID: 11400000, guid: dae2bf11506864a85b6e253c185af9d0, type: 2}
+  m_defaultSpriteAsset: {fileID: 11400000, guid: b13efbfc3ff3e41f1bac242603d20dae, type: 2}
   m_defaultSpriteAssetPath: Sprite Assets/
   m_enableEmojiSupport: 1
   m_MissingCharacterSpriteUnicode: 0
